@@ -47,6 +47,7 @@ export const generateObstacle = (canvasWidth) => {
     topHeight,
     gap,
     width: GAME_CONFIG.obstacle.width,
-    passed: false
+    passed: false,
+    towerType: Math.floor(Math.random() * 3)  // 0: Castle, 1: Church, 2: TV Tower
   };
 };

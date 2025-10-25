@@ -15,7 +15,7 @@ export const GAME_CONFIG = {
     minGap: 250,
     maxGap: 350,
     speed: 2,
-    spawnInterval: 90  // frames between obstacles
+    spawnInterval: 100  // frames between obstacles
   },
   collision: {
     buffer: 5  // collision forgiveness in pixels
@@ -29,12 +29,12 @@ export const GAME_CONFIG = {
 export const UPGRADE_CONFIG = {
   wing: {
     baseCost: 50,
-    costMultiplier: 1.5,
-    effectPerLevel: -0.15  // 15% improvement per level
+    costMultiplier: 1.25,
+    effectPerLevel: 0.15  // 15% improvement per level
   },
   fuel: {
     baseCost: 40,
-    costMultiplier: 1.5,
+    costMultiplier: 1.25,
     effectPerLevel: 0.2  // 20% improvement per level
   }
 };
