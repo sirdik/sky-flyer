@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Plane, TrendingUp, Fuel, Settings } from 'lucide-react';
+import { Plane, TrendingUp, Fuel, Settings, ShoppingBasket } from 'lucide-react';
 
 const SkyFlyerGame = () => {
   const canvasRef = useRef(null);
@@ -27,14 +27,14 @@ const SkyFlyerGame = () => {
     canvas: { width: 800, height: 600 },
     plane: { 
       size: 40,
-      baseGravity: 0.15,
+      baseGravity: 0.12,
       baseLift: -0.2,
-      maxSpeed: 4
+      maxSpeed: 3
     },
     obstacle: {
       width: 50,
-      minGap: 200,
-      maxGap: 300,
+      minGap: 250,
+      maxGap: 350,
       speed: 2,
       spawnInterval: 90
     }
@@ -56,12 +56,16 @@ const SkyFlyerGame = () => {
     const handleKeyDown = (e) => {
       if (gameState !== 'playing') return;
       if (e.key === 'ArrowUp') gameStateRef.current.keys.up = true;
+      if (e.key === 'w') gameStateRef.current.keys.up = true;
       if (e.key === 'ArrowDown') gameStateRef.current.keys.down = true;
+      if (e.key === 's') gameStateRef.current.keys.down = true;
     };
     
     const handleKeyUp = (e) => {
       if (e.key === 'ArrowUp') gameStateRef.current.keys.up = false;
+    if (e.key === 'w') gameStateRef.current.keys.up = false;
       if (e.key === 'ArrowDown') gameStateRef.current.keys.down = false;
+        if (e.key === 's') gameStateRef.current.keys.down = false;
     };
     
     window.addEventListener('keydown', handleKeyDown);
@@ -142,16 +146,16 @@ const SkyFlyerGame = () => {
     ctx.rotate(gs.plane.rotation * Math.PI / 180);
     
     // Plane body
-    ctx.fillStyle = '#DC143C';
+    ctx.fillStyle = '#101cc7ff';
     ctx.fillRect(-20, -8, 35, 16);
     
     // Wings
-    ctx.fillStyle = '#FF6347';
+    ctx.fillStyle = '#07811bff';
     ctx.fillRect(-10, -20, 25, 8);
     ctx.fillRect(-10, 12, 25, 8);
     
     // Nose
-    ctx.fillStyle = '#8B0000';
+    ctx.fillStyle = '#d11010ff';
     ctx.beginPath();
     ctx.moveTo(15, 0);
     ctx.lineTo(25, -5);
@@ -296,7 +300,7 @@ const SkyFlyerGame = () => {
                 Start Game
               </button>
               <button onClick={openShop} style={styles.shopButton}>
-                <Settings style={styles.buttonIcon} />
+                <ShoppingBasket  style={styles.buttonIcon} />
                 Shop
               </button>
             </div>
@@ -385,7 +389,7 @@ const SkyFlyerGame = () => {
                 Play Again
               </button>
               <button onClick={openShop} style={styles.shopButton}>
-                <Settings style={styles.buttonIcon} />
+                <ShoppingBasket style={styles.buttonIcon} />
                 Shop
               </button>
               <button onClick={() => setGameState('menu')} style={styles.menuButton}>
