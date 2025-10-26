@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Plane } from 'lucide-react';
+import { Plane, Coins, Medal, AlignCenterHorizontal, LucidePanelBottomDashed } from 'lucide-react';
 import { getUpgradeCost } from '../utils/gameUtils';
 import { useGameLoop } from '../hooks/useGameLoop';
 import MenuScreen from './MenuScreen';
@@ -68,8 +68,8 @@ const SkyFlyerGame = () => {
             Sky Flyer
           </h1>
           <div style={styles.stats}>
-            <div style={styles.coinBadge}>💰 Coins: {coins}</div>
-            <div style={styles.highScoreBadge}>🏆 High: {highScore}</div>
+            <div style={styles.coinBadge}><Coins style={styles.coinIcon} /> Coins: {coins}</div>
+            <div style={styles.highScoreBadge}><Medal style={styles.highScoreIcon}/> High: {highScore}</div>
           </div>
         </div>
 
@@ -150,20 +150,40 @@ const styles = {
     height: '2rem'
   },
   stats: {
+    padding: '1rem',
     display: 'flex',
-    gap: '1rem',
-    fontSize: '0.875rem'
+    gap: '1.5rem',
+    fontSize: '1rem',        
+    fontWeight: '500'
   },
   coinBadge: {
     backgroundColor: '#fef3c7',
     padding: '0.25rem 0.75rem',
-    borderRadius: '0.25rem'
+    margin: '0.25rem 0.75rem',
+    borderRadius: '0.25rem',
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '0.5rem'
   },
   highScoreBadge: {
     backgroundColor: '#dbeafe',
     padding: '0.25rem 0.75rem',
-    borderRadius: '0.25rem'
+    margin: '0.25rem 0.75rem',
+    borderRadius: '0.25rem',
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '0.5rem'
+  },
+  coinIcon: {
+    color: '#f8c600ff',
+    padding: 0,
+    
+  },
+  highScoreIcon: {
+    color: '#0370ffff',
+    padding: '0' 
   }
+
 };
 
 export default SkyFlyerGame;
